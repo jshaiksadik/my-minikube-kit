@@ -1,0 +1,18 @@
+# STEP 1 — Delete the broken Minikube VM
+minikube delete --all --purge
+#If delete fails due to permissions
+takeown /f C:\Users\Jafar\.minikube /r /d y
+icacls C:\Users\Jafar\.minikube /grant Jafar:(OI)(CI)F /t
+
+#Then run delete again:
+minikube delete --all --purge
+
+#STEP 2 — Start Minikube again (clean)
+minikube start --driver=hyperv
+#If you want more resources:
+minikube start --driver=hyperv --memory=4096 --cpus=2
+
+#STEP 3 — After creating a new cluster, reset context
+kubectl config use-context minikube
+kubectl cluster-info
+kubectl get nodes
