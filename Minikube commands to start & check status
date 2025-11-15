@@ -1,0 +1,11 @@
+# Check your current Kubernetes context
+kubectl config get-contexts
+# then
+kubectl config current-context
+# Start Minikube:
+minikube start
+kubectl config use-context minikube
+# Then verify:
+kubectl cluster-info
+kubectl get nodes
+
